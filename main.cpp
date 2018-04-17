@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
-int swap (int &r, int &b, int &g); //prototype
-
+int swap(int& first, int& second, int& third); //prototype
+//int first, second, third;
+int red, blue, green;
 int main()
 {
   //DO NOT CHANGE WITHIN THIS AREA...
@@ -10,11 +11,7 @@ int main()
   cin>>red>>green>>blue;
   //...END OF "DO NOT CHANGE" AREA
 
-red = blue;
-blue = green;
-green = red;
-
-swap (red, blue, green);
+swap (red, green, blue); //call
 
 //DO NOT CHANGE WITHIN THIS AREA...
   cout<<"Rearranged....\n";
@@ -22,12 +19,56 @@ swap (red, blue, green);
   return 0;
   //...END OF "DO NOT CHANGE" AREA
 }
-
-int swap(int &r, int &b, int &g) //definition
+int swap(int& first, int& second, int& third)
 {
-int temp = r;
-r = b;
-b = g;
-g = temp;
+int least, middle, greatest;
+if(first >= second && first >= third || first >= third && first >= second)
+{
+  greatest = first;
+}
+else if( second >= first && second >= third || second >= third && second >= first)
+{
+  greatest = second;
+}
+else if(third >= first && third >= second || third >= second && third >= first)
+{
+  greatest = third;
+}
+if( first >= second && first <= third || first >= third && first <= second)
+{
+  middle = first;
+}
+else if( second >= first && second <= third || second >= third && second <= first)
+{
+  middle = second;
+}
+else if(third >= second && third <= first || third >= first && third <= second)
+{
+  middle = third;
+}
+if(first <= second && first <= third || first <= third && first <= second)
+{
+  least = first;
+}
+else if(second <= first && second <= third || second <= third && second <= first)
+{
+  least = second;
+}
+else if(third <= first && third <= second || third <= second && third <= first)
+{
+  least = third;
+}
+
+
+  first = greatest;
+  second = middle;
+  third = least;
+/*
+  int temp;
+  temp = first;
+  first = second;
+  second = third;
+  third = temp;
+*/
 }
 
